@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"></constant>
+
+	<package name="struts-book" extends="struts-default">
+		<action name="mysearchbooks" class="com.bright.action.BookAction"
+			method="getBookByKey">
+			<result name="main">/main.jsp</result>
+			<result name="admin_main">/adminmain.jsp</result>
+		</action>
+		<action name="addbook" class="com.bright.action.BookAction" method="addBook">
+			<result name="success" type="redirectAction">getallbooks</result>
+		</action>
+		<action name="goedit" class="com.bright.action.BookAction" method="goEditBook">
+			<result name="success">/editbook.jsp</result>
+		</action>
+		<action name="editbook" class="com.bright.action.BookAction" method="editBook">
+			<result name="success" type="redirectAction">getallbooks</result>
+		</action>
+		<action name="getallbooks" class="com.bright.action.BookAction" method="getAll">
+			<result name="main">/main.jsp</result>
+			<result name="admin_main">/adminmain.jsp</result>
+		</action>
+	</package>
+	
+	<package name="struts-user" extends="struts-default">
+		<action name="mylogin" class="com.bright.action.UserAction"
+			method="login">
+			<result name="error">/loginerror.jsp</result>
+			<result name="success" type="redirectAction">getallbooks</result>
+		</action>
+		<action name="myregister" class="com.bright.action.UserAction"
+			method="register">
+			<result name="success">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="myeditinfo" class="com.bright.action.UserAction"
+			method="editMyInfo">
+			<result name="main" type="redirectAction">getallbooks</result>
+			<result name="admin_main" type="redirectAction">getalluser</result>
+		</action>
+		<action name="edituserinfo" class="com.bright.action.UserAction"
+			method="editUserInfo">
+			<result name="success" type="redirectAction">getalluser</result>
+		</action>
+		<action name="goedituser" class="com.bright.action.UserAction" method="goEditUser">
+			<result name="success" >/edituser.jsp</result>
+		</action>
+		<action name="getalluser" class="com.bright.action.UserAction"
+			method="getAll">
+			<result name="success">/alluser.jsp</result>
+		</action>
+		<action name="searchuser" class="com.bright.action.UserAction"
+			method="searchUser">
+			<result name="success">/alluser.jsp</result>
+		</action>
+	</package>
+
+	<package name="struts-borrow" extends="struts-default">
+		<action name="myborrow" class="com.bright.action.BorrowAction"
+			method="getMyBorrow">
+			<result name="success">/borrow.jsp</result>
+		</action>
+		<action name="borrowbook" class="com.bright.action.BorrowAction" method="borrowBook">
+			<result name="success" type="redirectAction">myborrow</result>
+			<result name="borrowerror">/borrowerror.jsp</result>
+		</action>
+		<action name="returnbook" class="com.bright.action.BorrowAction" method="returnBook">
+			<result name="success" type="redirectAction">myborrow</result>
+		</action>
+		<action name="getallborrow" class="com.bright.action.BorrowAction" method="getAll">
+			<result name="success">/allborrow.jsp</result>
+		</action>
+		<action name="searchmyborrow" class="com.bright.action.BorrowAction" method="searchMyBorrow">
+			<result name="success">/borrow.jsp</result>
+		</action>
+		<action name="searchallborrow" class="com.bright.action.BorrowAction" method="searchAllBorrow">
+			<result name="success">/allborrow.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="struts-press" extends="struts-default">
+		<action name="getallpress" class="com.bright.action.PressAction" method="getAll">
+			<result name="success">/allpress.jsp</result>
+		</action>	
+		<action name="searchpress" class="com.bright.action.PressAction" method="findByKey">
+			<result name="success">/allpress.jsp</result>
+		</action>
+		<action name="addpress" class="com.bright.action.PressAction" method="addPress">
+			<result name="success" type="redirectAction">getallpress</result>
+			<result name="error">/addpresserror.jsp</result>
+		</action>	
+		<action name="goeditpress" class="com.bright.action.PressAction" method="goEditPress">
+			<result name="success">/editpress.jsp</result>
+		</action>
+		<action name="editpress" class="com.bright.action.PressAction" method="editPress">
+			<result name="success" type="redirectAction">getallpress</result>
+		</action>
+	</package>
+</struts>    

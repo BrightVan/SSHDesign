@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+form {
+	z-index: 200;
+	position: absolute;
+	top: 200px;
+	right: 50px;
+	width: 400px;
+	height: 450px;
+	background-color: white;
+	border: 10px solid rgba(0, 0, 0, 0.12);
+	vertical-align: middle;
+	position: absolute;
+	
+}
+
+div#login_content img {
+	float: left;
+	width: 100%;
+}
+
